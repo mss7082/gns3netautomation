@@ -22,6 +22,8 @@ RUN apt-get update && apt-get -y install salt-master salt-minion
 
 RUN echo "master: 127.0.0.1" >> /etc/salt/minion
 
+VOLUME [ "/etc/salt", "/var/cache/salt", "/var/log/salt", "/var/run/salt" ]
+
 RUN service salt-master start
 
 RUN service salt-minion start
