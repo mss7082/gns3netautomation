@@ -7,7 +7,7 @@ MAINTAINER Moses
 ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && apt-get -y install apt-utils sudo wget openssh-server python3 \
-     gnupg git iputils-ping net-tools traceroute mtr vim \
+     gnupg git iputils-ping net-tools traceroute mtr vim python3-pip \
      && rm -rf /var/lib/apt/lists/*
 
 # Run the following command to import the SaltStack repository key
@@ -40,3 +40,10 @@ RUN chmod a-w /etc/ssh/sshd_config.factory-defaults
 RUN echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
 
 RUN service ssh start
+
+
+# Set up Napalm
+
+RUN pip3 install --upgrade pip
+
+RUN pip3 install napalm
