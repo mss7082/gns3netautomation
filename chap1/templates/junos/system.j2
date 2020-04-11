@@ -1,0 +1,46 @@
+system {
+    host-name {{pillar.proxy.devname}};
+    root-authentication {
+        encrypted-password "$6$HM7s7Jwv$l1RDpuCKVnDwDIsIkWzFByfDis/os/gBcoRBRCV8TpnUWgRccyGxcwCwgGG4WuRaUaY17KRXIBDAppUJDiVes1"; ## SECRET-DATA
+    }
+    login {
+        user salt {
+            uid 2000;
+            class super-user;
+            authentication {
+                encrypted-password "$6$mO/LQ5gy$JzpleTjLTLPIG/sKz62pB/M6WMCtM1ojrpNcHKUBlBsjp15m8BudeVyab.UgZj1DgV4qcMV1CPklc/rDo2fNw0"; ## SECRET-DATA
+            }
+        }
+    }
+    services {
+        ssh {
+            root-login allow;
+        }
+        web-management {
+            http {
+                interface fxp0.0;
+            }
+        }
+    }
+    syslog {
+        archive size 100k files 3;
+        user * {
+            any emergency;
+        }
+        file messages {
+            any critical;
+            authorization info;
+        }
+        file interactive-commands {
+            interactive-commands error;
+        }
+    }
+    max-configurations-on-flash 5;
+    max-configuration-rollbacks 5;
+    license {
+        autoupdate {
+            url https://ae1.juniper.net/junos/key_retrieval;
+        }
+    }
+}
+
