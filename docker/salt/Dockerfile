@@ -25,20 +25,15 @@ RUN touch /etc/salt/proxy
 
 RUN echo "master: localhost\npki_dir: /etc/salt/pki/proxy\ncache_dir: /var/cache/salt/proxy\nmultiprocessing: False" >> /etc/salt/proxy 
 
-VOLUME [ "/etc", "/var/cache/salt", "/var/log/salt", "/var/run/salt" ]
+VOLUME [ "/etc", "/var/cache/salt", "/var/log/salt", "/var/run/salt", "/srv" ]
 
 RUN salt-master -d
 
 RUN salt-minion -d
 
-RUN salt-key -y -A
 
 
 # Set up SSH
-
-RUN cp /etc/ssh/sshd_config /etc/ssh/sshd_config.factory-defaults
-
-RUN chmod a-w /etc/ssh/sshd_config.factory-defaults
 
 RUN echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
 
