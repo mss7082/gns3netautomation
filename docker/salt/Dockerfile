@@ -2,12 +2,11 @@
 
 FROM ubuntu:bionic
 
-MAINTAINER Moses
 
 ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && apt-get -y install apt-utils sudo wget openssh-server python3 \
-     gnupg git iputils-ping net-tools traceroute mtr vim python3-pip \
+     gnupg git iputils-ping net-tools traceroute mtr vim python3-pip tree \
      && rm -rf /var/lib/apt/lists/*
 
 # Run the following command to import the SaltStack repository key
@@ -22,11 +21,15 @@ RUN apt-get update && apt-get -y install salt-master salt-minion
 
 RUN echo "master: 127.0.0.1" >> /etc/salt/minion
 
-VOLUME [ "/etc/salt", "/var/cache/salt", "/var/log/salt", "/var/run/salt" ]
+RUN touch /etc/salt/proxy
 
-RUN service salt-master start
+RUN echo "master: localhost\npki_dir: /etc/salt/pki/proxy\ncache_dir: /var/cache/salt/proxy\nmultiprocessing: False" >> /etc/salt/proxy 
 
-RUN service salt-minion start
+VOLUME [ "/etc", "/var/cache/salt", "/var/log/salt", "/var/run/salt" ]
+
+RUN salt-master -d
+
+RUN salt-minion -d
 
 RUN salt-key -y -A
 
