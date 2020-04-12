@@ -1,0 +1,14 @@
+fileserver_backend:
+  - gitfs
+gitfs_user: ''
+gitfs_password: ''
+gitfs_update_interval: 300
+gitfs_remotes:
+  - https://github.com/mss7082/gns3netautomation.git:
+    - name: templates
+    - root: chap1/templates
+    - mountpoint: salt://chap1/templates
+  - https://github.com/mss7082/gns3netautomation.git:
+    - name: states
+    - root: chap1/states
+    - mountpoint: salt://chap1/states

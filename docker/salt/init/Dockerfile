@@ -40,8 +40,10 @@ RUN echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
 RUN service ssh start
 
 
-# Set up Napalm
+# Set up Napalm and PyGit2
 
 RUN pip3 install --upgrade pip
 
 RUN pip3 install napalm
+
+RUN pip3 install pygit2
