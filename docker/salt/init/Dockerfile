@@ -46,4 +46,3 @@ RUN pip3 install --upgrade pip
 
 RUN pip3 install napalm
 
-RUN pip3 install pygit2

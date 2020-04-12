@@ -1,14 +1,21 @@
 fileserver_backend:
   - gitfs
-gitfs_provider: gitpython
 gitfs_base: master
+gitfs_provider: gitpython
 gitfs_update_interval: 300
 gitfs_remotes:
-  - https://github.com/mss7082/gns3netautomation.git:
+  - ssh://git@github.com/mss7082/gns3netautomation.git:
     - name: templates
     - root: docker/salt/chap1/templates
     - mountpoint: salt://docker/salt/chap1/templates
-  - https://github.com/mss7082/gns3netautomation.git:
+  - ssh://git@github.com/mss7082/gns3netautomation.git:
     - name: states
     - root: docker/salt/chap1/states
     - mountpoint: salt://docker/salt/chap1/states
+
+git_pillar_update_interval: 300
+ext_pillar:
+  - git:
+    - master ssh://git@github.com/mss7082/gns3netautomation.git:
+      - root: docker/salt/chap1/pillar
+      - mountpoint: docker/salt/chap1/pillar
