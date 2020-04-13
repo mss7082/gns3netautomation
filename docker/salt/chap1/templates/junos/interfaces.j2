@@ -10,7 +10,7 @@ interfaces {
         unit {{unit_number}} {
             {% if "ipv4addr" in unit_dict.unit.unit_number.keys() %}
             family inet {
-                {% for ipv4 in unit_dict..unit.unit_number.ipv4addr %}
+                {% for ipv4 in unit_dict.unit.unit_number.ipv4addr %}
                 address {{ipv4}};
                 {% endfor %}
             }
