@@ -1,28 +1,30 @@
-{%- set interfaces = pillar.interfaces -%}
+{% for key, interface_list in pillar.interfaces.items() %}
+{%- set interfaces = interface_list -%}
+{% endfor -%}
 
 interfaces {
-    {% for intf_dict in interfaces %}
-    {% for intf, unit_dict in intf_dict.items() %}
+    {% for interface_dict in interfaces %}
+    {% for intf, unit_list in interface_dict.items() %}
     {{intf}} {
-        {% for unit, ipaddr_list in unit_dict.items() %}
+        {% for unit_dict in unit_list %}
+        {% for unit, ipaddr_dict in unit_dict.items() %}
         unit {{unit}} {
-            {% for ipaddr in ipaddr_list %}
-                {% if ipaddr["ipv4addr"] is defined %}
+                {% if "ipv4addr" in ipaddr_dict.keys() %}
             family inet {
-                    {% for ipv4 in ipaddr["ipv4addr"] %}
+                    {% for ipv4 in ipaddr_dict["ipv4addr"] %}
                 address {{ipv4}};
                     {% endfor %}
             }
                 {% endif %}
-                {% if ipaddr["ipv6addr"] is defined %}
+                {% if "ipv6addr" in ipaddr_dict.keys() %}
             family inet6 {
-                    {% for ipv6 in ipaddr["ipv4addr"] %}
+                    {% for ipv4 in ipaddr_dict["ipv6addr"] %}
                 address {{ipv6}};
                     {% endfor %}
             }
                 {% endif %}
-            {% endfor %}
         }
+        {% endfor %}
         {% endfor %}
     }
     {% endfor %}
