@@ -4,5 +4,3 @@ proxy:
   host: 172.16.1.12
   username: salt
   password: salt123
-  devname: srx2
-

@@ -13,11 +13,11 @@ gitfs_remotes:
     - root: docker/salt/chap1/states
     - mountpoint: salt://docker/salt/chap1/states
 
-git_pillar_provider: gitpython
-git_pillar_base: master
-git_pillar_update_interval: 120
-ext_pillar:
-  - git:
-    - master git@github.com:mss7082/gns3netautomation.git:
-      - root: docker/salt/chap1/pillar
-      - mountpoint: docker/salt/chap1/pillar
+#git_pillar_provider: gitpython
+#git_pillar_base: master
+#git_pillar_update_interval: 120
+#ext_pillar:
+#  - git:
+#    - master git@github.com:mss7082/gns3netautomation.git:
+#      - root: docker/salt/chap1/pillar
+#      - mountpoint: docker/salt/chap1/pillar
