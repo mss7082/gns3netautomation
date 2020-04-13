@@ -1,10 +1,10 @@
-{% for key, interface_list in pillar.interfaces %}
+{% for key, interface_list in pillar.interfaces.items() %}
 {%- set interfaces = interface_list -%}
 {% endfor -%}
 
 interfaces {
     {% for interface_dict in interfaces %}
-    {% for intf, unit_list in interface_dict.items() %}
+    {% for intf, unit_list in interface_dict %}
     {{intf}} {
         {% for unit_dict in unit_list %}
         {% for unit, ipaddr_dict in unit_dict.items() %}
