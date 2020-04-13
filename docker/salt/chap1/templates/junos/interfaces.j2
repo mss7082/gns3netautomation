@@ -16,7 +16,7 @@ interfaces {
             }
             {% endif %}
             {% if address_dict["ipv6addr"] %}
-            family inet {
+            family inet6 {
                 {% for ipv6 in address_dict["ipv6addr"] %}
                 address {{ipv6}};
                 {% endfor %}
