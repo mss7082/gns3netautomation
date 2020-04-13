@@ -4,7 +4,7 @@
 
 interfaces {
     {% for interface_dict in interfaces %}
-    {% for intf, unit_list in interface_dict %}
+    {% for intf, unit_list in interface_dict.items() %}
     {{intf}} {
         {% for unit_dict in unit_list %}
         {% for unit, ipaddr_dict in unit_dict.items() %}
@@ -18,7 +18,7 @@ interfaces {
                 {% endif %}
                 {% if "ipv6addr" in ipaddr_dict.keys() %}
             family inet6 {
-                    {% for ipv4 in ipaddr_dict["ipv6addr"] %}
+                    {% for ipv6 in ipaddr_dict["ipv6addr"] %}
                 address {{ipv6}};
                     {% endfor %}
             }
