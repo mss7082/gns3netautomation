@@ -8,18 +8,18 @@ interfaces {
     {{intf}} {
         {% for unit_number in unit_dict.units.keys() %}
         unit {{unit_number}} {
-            {% if "ipv4addr" in unit_dict.units.{{unit_number}}.keys() %}
+            {% if unit_dict.units[unit_number]["ipv4addr"] %}
             family inet {
-                {% for ipv4 in unit_dict.units.{{unit_number}}.ipv4addr %}
+                {% for ipv4 in unit_dict["units"][unit_number]["ipv4addr"] %}
                 address {{ipv4}};
                 {% endfor %}
             }
             {% endif %}
-                {% if "ipv6addr" in unit_dict.units.{{unit_number}}.keys() %}
+            {% if unit_dict.units[unit_number]["ipv6addr"] %}
             family inet {
-                    {% for ipv6 in unit_dict.units.{{unit_number}}.ipv6addr %}
+                {% for ipv6 in unit_dict["units"][unit_number]["ipv6addr"] %}
                 address {{ipv6}};
-                    {% endfor %}
+                {% endfor %}
             }
                 {% endif %}
         }
