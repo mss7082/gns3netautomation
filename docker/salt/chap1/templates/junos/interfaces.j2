@@ -2,29 +2,29 @@
 {%- set interfaces = interface_list -%}
 {% endfor -%}
 
+
+
 interfaces {
     {% for interface_dict in interfaces %}
-    {% for intf, unit_list in interface_dict.items() %}
+    {% for intf, unit_dict in interface_dict.items() %}
     {{intf}} {
-        {% for unit_dict in unit_list %}
-        {% for unit, ipaddr_dict in unit_dict.items() %}
+        {% for unit in unit_dict.keys() %}
         unit {{unit}} {
-                {% if "ipv4addr" in ipaddr_dict.keys() %}
+            {% if "ipv4addr" in unit_dict["unit"].keys() %}
             family inet {
-                    {% for ipv4 in ipaddr_dict["ipv4addr"] %}
+                {% for ipv4 in unit_dict["unit"]["ipv4addr"] %}
                 address {{ipv4}};
-                    {% endfor %}
+                {% endfor %}
             }
-                {% endif %}
-                {% if "ipv6addr" in ipaddr_dict.keys() %}
-            family inet6 {
-                    {% for ipv6 in ipaddr_dict["ipv6addr"] %}
+            {% endif %}
+                {% if "ipv6addr" in unit_dict["unit"].keys() %}
+            family inet {
+                    {% for ipv6 in unit_dict["unit"]["ipv6addr"] %}
                 address {{ipv6}};
                     {% endfor %}
             }
                 {% endif %}
         }
-        {% endfor %}
         {% endfor %}
     }
     {% endfor %}
