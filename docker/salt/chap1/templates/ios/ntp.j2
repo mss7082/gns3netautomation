@@ -1,0 +1,7 @@
+no ntp
+{%- for server in servers %}
+ntp server {{server}}
+{%- endfor %}
+{%- for peer in peers %}
+ntp peer {{peer}}
+{%- endfor %}
