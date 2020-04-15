@@ -12,6 +12,10 @@ gitfs_remotes:
     - name: states
     - root: docker/salt/chap1/states
     - mountpoint: salt://docker/salt/chap1/states
+  - ssh://git@github.com/mss7082/gns3netautomation.git:
+    - name: custom_modules
+    - root: docker/salt/init/_modules
+    - mountpoint: salt://docker/salt/init/_modules
 
 #git_pillar_provider: gitpython
 #git_pillar_base: master
