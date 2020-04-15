@@ -1,6 +1,7 @@
 base:
   '*':
-    - dns
+    - regional.dns
+    - regional.ntp
   r1:
     - r1.conn_driver
     - r1.router
