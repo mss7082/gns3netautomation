@@ -1,4 +1,4 @@
-import salt124
+import salt
 
 def hello():
     return "hello world"
