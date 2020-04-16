@@ -13,5 +13,10 @@ base:
   r3:
     - r3.conn_driver
     - r3.router
-    - r3.interfaces
+  r4:
+    - r4.conn_driver
+    - r4.router
+  r5:
+    - r5.conn_driver
+    - r5.router
 
