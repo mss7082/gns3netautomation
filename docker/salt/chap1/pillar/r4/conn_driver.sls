@@ -5,4 +5,4 @@ proxy:
   username: salt
   password: salt123
   optional_args:
-    port: 22022
+    port: 22
