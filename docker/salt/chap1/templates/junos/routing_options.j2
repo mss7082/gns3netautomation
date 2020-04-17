@@ -1,0 +1,8 @@
+routing-options {
+    static {
+        route {{pillar.mgmtipv4 | network_hosts }} {
+            next-hop {{pillar.mgmtipv4 | network_hosts[0] }};
+            no-readvertise;
+        }
+    }
+}
