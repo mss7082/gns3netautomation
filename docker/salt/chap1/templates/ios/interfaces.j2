@@ -15,3 +15,8 @@ interface {{intf}}
   no shut
 {% endfor -%}
 {% endfor -%}
+interface g0/0
+  ip address {{pillar.mgmtipv4}}
+  no shut
+int lo0
+  ip address {{pillar.loopbackv4}}
