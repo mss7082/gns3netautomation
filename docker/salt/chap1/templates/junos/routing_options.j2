@@ -1,7 +1,7 @@
 routing-options {
     static {
-        route {{pillar.mgmtipv4 | network_hosts }} {
-            next-hop {{pillar.mgmtipv4 | network_hosts[0] }};
+        route {{pillar.mgmtipv4}} {
+            next-hop 172.16.1.1;
             no-readvertise;
         }
     }
