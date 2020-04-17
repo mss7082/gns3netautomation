@@ -1,4 +1,4 @@
-{% set hosts in {{ pillar.mgmtipv4 | network_hosts}} %}
+{% set hosts = pillar.mgmtipv4 | network_hosts %}
 {% set gateway = hosts[0] %}
 {% set network = hosts[-1] %}
 
