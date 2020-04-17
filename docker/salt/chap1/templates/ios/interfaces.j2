@@ -23,7 +23,7 @@ interface {{intf}}
 {% endfor -%}
 {% endfor -%}
 interface g4
-  ip address {{pillar.mgmtipv4.split("/")[0]}} 255.255.255.0}}
+  ip address {{pillar.mgmtipv4.split("/")[0]}} 255.255.255.0
   no shut
 int lo0
-  ip address {{pillar.loopbackv4.split("/")[0]}} 255.255.255.0}}
+  ip address {{pillar.loopbackv4.split("/")[0]}} 255.255.255.255
