@@ -10,7 +10,7 @@ interface {{intf}}
   ip address {{addr_dict.ipv4addr.split("/")[0]}} 255.255.255.0
   {% endif %}
   {% if addr_dict.ipv6addr %}
-  ip address {{addr_dict.ipv6addr}}
+  ipv6 address {{addr_dict.ipv6addr}}
   {% endif %}
   no shut
 {% endfor -%}
