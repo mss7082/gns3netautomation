@@ -1,0 +1,3 @@
+{% for server in pillar.dns.servers %}
+domain name-server {{server}}
+{% endfor %}
