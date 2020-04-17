@@ -1,7 +1,12 @@
+{% set hosts in pillar.mgmtipv4 | network_hosts %}
+{% set gateway = hosts[0] %}
+{% set network = hosts[-1] %}
+
+
 routing-options {
     static {
-        route {{pillar.mgmtipv4}} {
-            next-hop 172.16.1.1;
+        route {{network}} {
+            next-hop {{gateway}};
             no-readvertise;
         }
     }
