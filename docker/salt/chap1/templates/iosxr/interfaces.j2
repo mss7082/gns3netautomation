@@ -2,16 +2,16 @@
 {%- set interfaces = pillar.interfaces -%}
 
 {% for interface_dict in interfaces %}
-{% for intf in interface_dict.keys() %}
+{% for intf, addr_dict in interface_dict.items() %}
 interface {{intf}}
-  {% if intf.description %}
-  description {{intf.description}}
+  {% if addr_dict.description %}
+  description {{addr_dict.description}}
   {% endif %}
-  {% if intf.ipv4addr %}
-  ipv4 address {{intf.ipv4addr}}
+  {% if addr_dict.ipv4addr %}
+  ipv4 address {{addr_dict.ipv4addr}}
   {% endif %}
-  {% if intf.ipv6addr %}
-  ipv6 address {{intf.ipv6addr}}
+  {% if addr_dict.ipv6addr %}
+  ipv6 address {{addr_dict.ipv6addr}}
   {% endif %}
   no shut
 {% endfor -%}

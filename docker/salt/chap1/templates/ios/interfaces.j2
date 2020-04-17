@@ -1,7 +1,6 @@
 {# TO DO - Create filter to get network id and network mask from cidr#}
-{%- set interfaces = pillar.interfaces -%}
 
-{% for interface_dict in interfaces %}
+{% for interface_dict in pillar.interfaces %}
 {% for intf , addr_dict in interface_dict.items() %}
 interface {{intf}}
   {% if addr_dict.description %}
