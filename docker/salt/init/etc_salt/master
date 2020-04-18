@@ -1,9 +1,4 @@
-file_roots:
-  base:
-    - /srv/salt
-
 fileserver_backend:
-  - roots
   - gitfs
 gitfs_base: master
 gitfs_provider: gitpython
