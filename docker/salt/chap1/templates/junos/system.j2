@@ -4,13 +4,22 @@ system {
         encrypted-password "$6$HM7s7Jwv$l1RDpuCKVnDwDIsIkWzFByfDis/os/gBcoRBRCV8TpnUWgRccyGxcwCwgGG4WuRaUaY17KRXIBDAppUJDiVes1"; ## SECRET-DATA
     }
     login {
-        user salt {
-            uid 2000;
-            class super-user;
+
+    {%- for class in pillar.classes %}
+        class {{class}}
+            permissions all;
+            deny-commands "start shell";
+    {% endfor %}
+
+    {% for user in pillar.users %}
+        user {{user}} {
+            uid {{user.uid}};
+            class {{user.class}};
             authentication {
-                encrypted-password "$6$mO/LQ5gy$JzpleTjLTLPIG/sKz62pB/M6WMCtM1ojrpNcHKUBlBsjp15m8BudeVyab.UgZj1DgV4qcMV1CPklc/rDo2fNw0"; ## SECRET-DATA
+                encrypted-password "{{user.password}}"; ## SECRET-DATA
             }
         }
+    {% endfor %}
     }
     services {
         ssh {
