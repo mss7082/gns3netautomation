@@ -1,8 +1,8 @@
+{% set servers = salt.pillar.get("dns.servers") %}
 system {
     name-server {
-       {% for server in pillar.dns.servers %}
-       server
+       {% for server in servers %}
+       {{server}};
       {% endfor %}
     }
 }
-
