@@ -14,10 +14,10 @@ system {
     {% for user_dict in pillar.users %}
     {% for user, user_info in user_dict.items() %}
         user {{user}} {
-            uid {{user_info.uid}};
-            class {{user_info.class}};
+            uid {{user.uid}};
+            class {{user.class}};
             authentication {
-                encrypted-password "{{user_info.password}}"; ## SECRET-DATA
+                encrypted-password "{{user.password}}"; ## SECRET-DATA
             }
         }
     {% endfor %}
