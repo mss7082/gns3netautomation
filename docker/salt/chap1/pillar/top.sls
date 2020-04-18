@@ -1,7 +1,9 @@
 base:
-  '*':
+  'r*':
     - regional.dns
     - regional.ntp
+    - regional.classes
+    - regional.users
   r1:
     - r1.conn_driver
     - r1.router
