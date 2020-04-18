@@ -12,12 +12,12 @@ system {
     {% endfor %}
 
     {% for user_dict in pillar.users %}
-    {% for user, user_info in user_dict.items() %}
+    {% for user in user_dict.keys() %}
         user {{user}} {
-            uid {{user.uid}};
-            class {{user.class}};
+            uid {{user_dict.user.uid}};
+            class {{user_dict.user.class}};
             authentication {
-                encrypted-password "{{user.password}}"; ## SECRET-DATA
+                encrypted-password "{{user_dict.user.password}}"; ## SECRET-DATA
             }
         }
     {% endfor %}
