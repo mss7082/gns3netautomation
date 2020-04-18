@@ -2,6 +2,7 @@
 {% set peers = salt.pillar.get("ntp.peers") %}
 
 system {
+  replace:
     ntp {
       {% for server in servers %}
       server {{server}};
