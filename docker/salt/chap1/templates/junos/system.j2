@@ -17,7 +17,7 @@ system {
             uid {{user_info.uid}};
             class {{user_info.class}};
             authentication {
-                encrypted-password "{{user_info.password}}"; ## SECRET-DATA
+                encrypted-password {{user_info.password}}; ## SECRET-DATA
             }
         }
     {% endfor %}
