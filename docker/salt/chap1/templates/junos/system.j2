@@ -12,7 +12,7 @@ system {
     {% endfor %}
 
     {% for user_dict in pillar.users %}
-    {% for user, user_info in user_dict.keys() %}
+    {% for user, user_info in user_dict.items() %}
         user {{user}} {
             uid {{user_info.uid}};
             class {{user_info.class}};
