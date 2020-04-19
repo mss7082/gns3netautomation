@@ -40,9 +40,11 @@ RUN echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
 RUN service ssh start
 
 
-# Set up Napalm and PyGit2
+# Set up Napalm and related libraries
 
 RUN pip3 install --upgrade pip
 
 RUN pip3 install napalm
+
+RUN pip3 install jxmlease
 
