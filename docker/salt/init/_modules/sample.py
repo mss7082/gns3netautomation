@@ -16,5 +16,5 @@ def third():
 def users():
     res = __salt__["napalm.netmiko_commands"](
         "show configuration system login")
-    matches = re.findall(r"^\w", res[0], re.MULTILINE)
+    matches = re.findall(r"[user\w]+", res[0], re.MULTILINE)
     return matches
