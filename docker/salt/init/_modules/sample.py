@@ -17,4 +17,6 @@ def users():
     for lines in res[0]:
         if "salt" in lines:
             users.append(lines)
+        else:
+            return "None found"
     return users
