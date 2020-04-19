@@ -14,4 +14,4 @@ def users():
     users = []
     res = __salt__["napalm.netmiko_commands"](
         "show configuration system login")
-    return res[0]["user salt"]
+    return res
