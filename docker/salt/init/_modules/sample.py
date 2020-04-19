@@ -14,7 +14,8 @@ def third():
 
 
 def users():
+    pattern = re.compile(r"user")
     res = __salt__["napalm.netmiko_commands"](
         "show configuration system login")
-    matches = re.findall(r"user", res[0], re.MULTILINE)
+    matches = pattern.finditer(res)
     return matches
