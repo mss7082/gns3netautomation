@@ -1,3 +1,6 @@
+import re
+
+
 def first():
     return True
 
@@ -11,12 +14,7 @@ def third():
 
 
 def users():
-    users = []
     res = __salt__["napalm.netmiko_commands"](
         "show configuration system login")
-    for lines in res[0]:
-        if "salt" in lines:
-            users.append(lines)
-        else:
-            return "None found"
-    return users
+    matches = re.findall(r"^\w", res[0], re.MULTILINE)
+    return matches
