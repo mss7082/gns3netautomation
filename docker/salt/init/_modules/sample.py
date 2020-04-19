@@ -1,6 +1,3 @@
-import re
-
-
 def first():
     return True
 
@@ -18,6 +15,6 @@ def users():
     res = __salt__["napalm.netmiko_commands"](
         "show configuration system login")
     for lines in res[0]:
-        if "user" in lines:
+        if "salt" in lines:
             users.append(lines)
     return users
