@@ -8,7 +8,7 @@ def __virtual__():
         return (False, 'Not loading this module, as this is not a Junos device')
 
 
-def users():
+def get_users():
     '''
     Returns a list of users configured on network devices.
 
@@ -32,3 +32,47 @@ def users():
     for match in matches:
         users.append(match.split(" ")[1])
     return users
+
+
+def check_user_not_configured(user=None, **kwargs):
+    '''
+    Takes a user argument and returns True if user is not configured on the target
+
+    Supports;
+        junos
+        ios
+        iosxr
+
+
+    CLI Example::
+
+        salt '*' general.check_users_not_configured user=salt_user
+
+    '''
+    users_on_device = get_users()
+    if user in users_on_device:
+        return (False, f"User {user} is already configured on device")
+    else:
+        return True
+
+
+def check_user_configured(user=None, **kwargs):
+    '''
+    Takes a user argument and returns True if user is configured on the target
+
+    Supports;
+        junos
+        ios
+        iosxr
+
+
+    CLI Example::
+
+        salt '*' general.check_user_configured user=salt_user
+
+    '''
+    users_on_device = get_users()
+    if user in users_on_device:
+        return (True, f"User {user} is already configured on device")
+    else:
+        return False
