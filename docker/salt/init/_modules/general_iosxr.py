@@ -2,10 +2,10 @@ import re
 
 
 def __virtual__():
-    if __grains__["os"] == "junos":
+    if __grains__["os"] == "iosxr":
         return "general"
     else:
-        return (False, 'Not loading this module, as this is not a Junos device')
+        return (False, 'Not loading this module, as this is not an iosxr device')
 
 
 def users():
@@ -25,9 +25,9 @@ def users():
 
     '''
     users = []
-    pattern = re.compile(r"user\s[\w]+")
+    pattern = re.compile(r"username\s[\w]+")
     res = __salt__["napalm.netmiko_commands"](
-        "show configuration system login")
+        "show run username")
     matches = pattern.findall(res[0])
     for match in matches:
         users.append(match.split(" ")[1])

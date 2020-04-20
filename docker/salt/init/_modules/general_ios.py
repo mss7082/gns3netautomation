@@ -17,6 +17,8 @@ def users():
         ios
         iosxr
 
+    NOTE: This function does not return root user on junos nor admin user on iosxr.
+
     CLI Example::
 
         salt '*' general.users
