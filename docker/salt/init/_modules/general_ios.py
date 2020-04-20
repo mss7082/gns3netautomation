@@ -23,7 +23,7 @@ def users():
 
     '''
     users = []
-    pattern = re.compile(r"user\s[\w]+")
+    pattern = re.compile(r"username\s[\w]+")
     res = __salt__["napalm.netmiko_commands"](
         "show run | i  username")
     matches = pattern.findall(res[0])
