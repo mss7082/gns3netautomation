@@ -51,7 +51,7 @@ def check_user_not_configured(user=None, **kwargs):
     '''
     users_on_device = get_users()
     if user in users_on_device:
-        return (False, f"User {user} is already configured on device")
+        return False
     else:
         return True
 
@@ -73,6 +73,6 @@ def check_user_configured(user=None, **kwargs):
     '''
     users_on_device = get_users()
     if user in users_on_device:
-        return (True, f"User {user} is already configured on device")
+        return True
     else:
         return False
