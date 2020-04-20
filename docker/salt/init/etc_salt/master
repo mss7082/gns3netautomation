@@ -31,5 +31,5 @@ git_pillar_update_interval: 120
 ext_pillar:
   - git:
     - master ssh://git@github.com/mss7082/gns3netautomation.git:
-      - root: docker/salt/chap1/pillar
+      - root: pillar
       - mountpoint: pillar/
