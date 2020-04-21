@@ -57,6 +57,8 @@ check_new_user_exist:
     # - retry:
     #     attempts: 2
     #     interval: 60
+    - kwarg:
+      timeout: 300
 
 
 
