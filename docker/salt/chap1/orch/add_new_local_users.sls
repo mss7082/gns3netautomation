@@ -34,13 +34,22 @@ verify_access_to_device:
     - arg:
       - {{pillar.proxy.host}}
       - count: 5
-    - onfail:
-      - 
 
 rollback_config:
   salt.function:
     - tgt: {{targets}}
     - name: net.rollback
+    - onfail_any:
+      - net: verify_access_to_device
+      - general: check_new_user_exist
+
+
+check_new_user_exist:
+  salt.function:
+    - tgt: {{targets}}
+    - name: general.check_user_configured
+    - arg:
+      - user: {{user}}
 
     
 
