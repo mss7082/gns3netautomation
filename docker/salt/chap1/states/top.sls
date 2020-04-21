@@ -1,3 +1,4 @@
 base:
   'r*':
     - ntp
+    - system
