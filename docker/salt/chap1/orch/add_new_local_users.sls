@@ -32,7 +32,7 @@ verify_access_to_device:
     - tgt: {{targets}}
     - name: net.ping
     - arg:
-      - {{pillar.proxy.host}}
+      - 172.16.1.1
       - count: 5
 
 rollback_config:
