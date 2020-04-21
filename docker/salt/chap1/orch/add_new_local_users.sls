@@ -8,14 +8,14 @@
 # Roll back from save rescue or saved config.
 
 {% set targets = "r[12]"%}
-{% set user = "inetzero"%}
+# {% set user = "inetzero"%}
 
-check_new_user_not_exist:
-  salt.function:
-    - tgt: {{targets}}
-    - name: general.check_user_not_configured
-    - arg:
-      - user: {{user}}
+# check_new_user_not_exist:
+#   salt.function:
+#     - tgt: {{targets}}
+#     - name: general.check_user_not_configured
+#     - arg:
+#       - user: {{user}}
 
 
 push_user_changes:
