@@ -23,7 +23,7 @@ push_user_changes:
     - tgt: {{targets}}
     - name: net.load_template
     - arg:
-      - template_name: salt://templates/junos/system.j2
+      - salt://templates/junos/system.j2
       - commit_in: 1m
 
 
