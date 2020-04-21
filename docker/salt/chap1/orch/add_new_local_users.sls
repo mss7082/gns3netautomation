@@ -44,12 +44,12 @@ push_user_changes:
 #       - general: check_new_user_exist
 
 
-# check_new_user_exist:
-#   salt.function:
-#     - tgt: {{targets}}
-#     - name: general.check_user_configured
-#     - arg:
-#       - user: {{user}}
+check_new_user_exist:
+  salt.function:
+    - tgt: {{targets}}
+    - name: general.check_user_configured
+    - arg:
+      - user: {{user}}
 
     
 

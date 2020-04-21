@@ -2,7 +2,7 @@ fileserver_backend:
   - gitfs
 gitfs_base: master
 gitfs_provider: gitpython
-gitfs_update_interval: 300
+gitfs_update_interval: 60
 gitfs_remotes:
   - ssh://git@github.com/mss7082/gns3netautomation.git:
     - name: templates
@@ -27,7 +27,7 @@ gitfs_remotes:
 
 git_pillar_provider: gitpython
 git_pillar_base: master
-git_pillar_update_interval: 120
+git_pillar_update_interval: 60
 ext_pillar:
   - git:
     - master ssh://git@github.com/mss7082/gns3netautomation.git:
