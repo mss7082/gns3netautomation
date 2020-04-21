@@ -54,8 +54,10 @@ check_new_user_exist:
     - name: general.check_user_configured
     - arg:
       - user: {{user}}
+    - retry:
+      attempts: 5
+      interval: 60
 
-    
 
 
 
