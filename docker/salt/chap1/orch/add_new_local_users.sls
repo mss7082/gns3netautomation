@@ -55,8 +55,8 @@ check_new_user_exist:
     - arg:
       - user: {{user}}
     - retry:
-      attempts: 5
-      interval: 60
+        attempts: 5
+        interval: 60
 
 
 
