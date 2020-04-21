@@ -48,6 +48,23 @@ push_user_changes:
 # COMMIT
 
 
+test_pings:
+  salt.function:
+    - tgt: {{targets}}
+    - name: test.ping
+    - retry:
+        attempts: 2
+        interval: 60
+
+test_pings2:
+  salt.function:
+    - tgt: {{targets}}
+    - name: test.ping
+    - retry:
+        attempts: 2
+        interval: 60
+
+
 check_new_user_exist:
   salt.function:
     - tgt: {{targets}}
