@@ -21,7 +21,7 @@ check_new_user_not_exist:
 push_user_changes:
   salt.function:
     - tgt: {{targets}}
-    - name: netconfig.managed:
+    - name: netconfig.managed
     - arg:
       - salt://templates/junos/system.j2
       - commit_in: 1m
