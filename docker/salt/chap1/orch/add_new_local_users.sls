@@ -19,12 +19,10 @@ check_new_user_not_exist:
 
 
 push_user_changes:
-  salt.function:
+  salt.state:
     - tgt: {{targets}}
-    - name: netconfig.managed
-    - arg:
-      - salt://templates/junos/system.j2
-      - commit_in: 1m
+    - sls:
+      - states.system
 
 
 # verify_access_to_device:
