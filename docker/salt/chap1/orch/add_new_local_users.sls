@@ -21,7 +21,7 @@ check_new_user_not_exist:
 push_user_changes:
   salt.function:
     - tgt: {{targets}}
-    - name: netconfig.managed
+    - name: net.load_template
     - arg:
       - template_name: salt://templates/{{salt.grains.get("os")}}/system.j2
       - commit_in: 1m
@@ -42,6 +42,12 @@ push_user_changes:
 #     - onfail_any:
 #       - net: verify_access_to_device
 #       - general: check_new_user_exist
+
+
+# CANCEL COMMIT
+
+
+# COMMIT
 
 
 check_new_user_exist:
