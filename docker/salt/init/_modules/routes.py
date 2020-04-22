@@ -12,14 +12,17 @@ def prefix_active_in_route_table(prefix, **kwargs):
         salt '*' routes.prefix_active_in_route_table 1.1.1.1/32
 
     '''
+    result_list = []
     if (__grains__["os"] == "ios") or (__grains__["os"] == "junos"):
         res = __salt__["route.show"](prefix)
-        if res["out"][prefix]["current_active"] == "true":
-            return True
-        else:
-            return False
+        for protocol_list in res["out"][prefix]:
+            result_list.append(protocol_list)
     else:
         return (False, "Os is not supported")
+    if "true" in result_list:
+        return True
+    else:
+        return False
 
 
 def prefix_not_active_in_route_table(prefix, **kwargs):
@@ -36,11 +39,14 @@ def prefix_not_active_in_route_table(prefix, **kwargs):
         salt '*' routes.prefix_not_active_in_route_table 1.1.1.1/32
 
     '''
+    result_list = []
     if (__grains__["os"] == "ios") or (__grains__["os"] == "junos"):
         res = __salt__["route.show"](prefix)
-        if res["out"][prefix]["current_active"] == "true":
-            return False
-        else:
-            return True
+        for protocol_list in res["out"][prefix]:
+            result_list.append(protocol_list)
     else:
         return (False, "Os is not supported")
+    if "true" in result_list:
+        return False
+    else:
+        return True
