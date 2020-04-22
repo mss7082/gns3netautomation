@@ -9,6 +9,11 @@ check_new_user_not_exist:
       - user: {{user}}
 
 
+check_route_active:
+  salt.function:
+    
+
+
 push_user_changes:
   salt.state:
     - tgt: {{targets}}
