@@ -17,6 +17,10 @@ gitfs_remotes:
     - root: docker/salt/init/_modules
     - mountpoint: salt://_modules
   - ssh://git@github.com/mss7082/gns3netautomation.git:
+    - name: custom_utils
+    - root: docker/salt/init/_utils
+    - mountpoint: salt://_utils
+  - ssh://git@github.com/mss7082/gns3netautomation.git:
     - name: orchestration
     - root: docker/salt/chap1/orch
     - mountpoint: salt://orch

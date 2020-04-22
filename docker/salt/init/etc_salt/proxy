@@ -1,4 +1,4 @@
 master: localhost
-pki_dir: /usr/local/etc/salt/pki/proxy
+pki_dir: /etc/salt/pki/proxy
 cache_dir: /var/cache/salt/proxy
 multiprocessing: False
