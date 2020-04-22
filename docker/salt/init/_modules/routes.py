@@ -16,7 +16,7 @@ def prefix_active_in_route_table(prefix, **kwargs):
     if (__grains__["os"] == "ios") or (__grains__["os"] == "junos"):
         res = __salt__["route.show"](prefix)
         for protocol_list in res["out"][prefix]:
-            result_list.append(protocol_list.lower())
+            result_list.append(protocol_list["current_active"].lower())
     else:
         return (False, "Os is not supported")
     if "true" in result_list:
@@ -43,7 +43,7 @@ def prefix_not_active_in_route_table(prefix, **kwargs):
     if (__grains__["os"] == "ios") or (__grains__["os"] == "junos"):
         res = __salt__["route.show"](prefix)
         for protocol_list in res["out"][prefix]:
-            result_list.append(protocol_list.lower())
+            result_list.append(protocol_list["current_active"].lower())
     else:
         return (False, "Os is not supported")
     if "true" in result_list:
