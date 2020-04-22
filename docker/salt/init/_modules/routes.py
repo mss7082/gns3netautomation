@@ -1,4 +1,4 @@
-def prefix_active_in_route_table(prefix=None, **kwargs):
+def prefix_active_in_route_table(prefix, **kwargs):
     '''
     Returns true if prefix is active in the route table
 
@@ -22,7 +22,7 @@ def prefix_active_in_route_table(prefix=None, **kwargs):
         return (False, "Os is not supported")
 
 
-def prefix_not_active_in_route_table(prefix=None, **kwargs):
+def prefix_not_active_in_route_table(prefix, **kwargs):
     '''
     Returns true if prefix is not active in the route table
 
