@@ -39,13 +39,13 @@ push_user_changes:
 # COMMIT
 
 
-check_new_user_exist:
-  salt.function:
-    - tgt: {{targets}}
-    - name: general.user_configured
-    - arg:
-      - user: {{user}}
-    - retry: True
+# check_new_user_exist:
+#   salt.function:
+#     - tgt: {{targets}}
+#     - name: general.user_configured
+#     - arg:
+#       - user: {{user}}
+#     - retry: True
 
 
 
