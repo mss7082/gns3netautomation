@@ -34,7 +34,7 @@ def get_users():
     return users
 
 
-def check_user_not_configured(user=None, **kwargs):
+def user_not_configured(user=None, **kwargs):
     '''
     Takes a user argument and returns True if user is not configured on the target
 
@@ -46,7 +46,7 @@ def check_user_not_configured(user=None, **kwargs):
 
     CLI Example::
 
-        salt '*' general.check_users_not_configured user=salt_user
+        salt '*' general.users_not_configured user=salt_user
 
     '''
     users_on_device = get_users()
@@ -56,7 +56,7 @@ def check_user_not_configured(user=None, **kwargs):
         return True
 
 
-def check_user_configured(user=None, **kwargs):
+def user_configured(user=None, **kwargs):
     '''
     Takes a user argument and returns True if user is configured on the target
 
@@ -68,7 +68,7 @@ def check_user_configured(user=None, **kwargs):
 
     CLI Example::
 
-        salt '*' general.check_user_configured user=salt_user
+        salt '*' general.user_configured user=salt_user
 
     '''
     users_on_device = get_users()
