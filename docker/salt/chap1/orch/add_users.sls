@@ -16,7 +16,7 @@ check_prefix_is_active:
     - tgt: {{targets}}
     - name: routes.prefix_active_in_route_table
     - arg:
-      - prefix: \"{{prefix}}\"
+      - prefix: {{"prefix"}}
 
 
 
@@ -53,7 +53,7 @@ check_prefix_is_not_active:
     - tgt: {{targets}}
     - name: routes.prefix_not_active_in_route_table
     - arg:
-      - prefix: \"{{dummy_prefix}}\"
+      - prefix: {{"dummy_prefix"}}
 
 check_user_is_configured:
   salt.function:
