@@ -53,7 +53,7 @@ check_prefix_is_not_active:
     - tgt: {{targets}}
     - name: routes.prefix_not_active_in_route_table
     - arg:
-      - prefix: "20.20.20.20"
+      - prefix: "20.20.20.20/32"
 
 # check_user_is_configured:
 #   salt.function:
