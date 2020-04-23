@@ -48,19 +48,19 @@ push_user_changes:
 
 
 # COMMIT
-check_prefix_is_not_active:
-  salt.function:
-    - tgt: {{targets}}
-    - name: routes.prefix_not_active_in_route_table
-    - arg:
-      - prefix: {{dummy_prefix}}:
+# check_prefix_is_not_active:
+#   salt.function:
+#     - tgt: {{targets}}
+#     - name: routes.prefix_not_active_in_route_table
+#     - arg:
+#       - prefix: {{dummy_prefix}}:
 
 
 
 
-check_user_is_configured:
-  salt.function:
-    - tgt: {{targets}}
-    - name: general.user_configured
-    - arg:
-      - user: {{user}}
+# check_user_is_configured:
+#   salt.function:
+#     - tgt: {{targets}}
+#     - name: general.user_configured
+#     - arg:
+#       - user: {{user}}
