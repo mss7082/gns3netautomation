@@ -4,8 +4,11 @@ interfaces {
     {% for interface_dict in pillar.interfaces %}
     {% for intf, intf_data_dict in interface_dict.items() %}
     {% set splited_intf = intf.split(".") %}
+
     {% if "ae" in intf %}
     {% set lag_intf = True %}
+    {% else %}
+    {% set lag_intf = False %}
     {% endif %}
 
 
@@ -45,7 +48,7 @@ interfaces {
         }
     }
 
-    {% if lag_intf is defined %}
+    {% if lag_intf %}
         {% for member in intf_data_dict.members %}
     {{ member }} {
         gigether-options {
