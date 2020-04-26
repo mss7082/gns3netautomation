@@ -21,9 +21,6 @@ interfaces:
       description: Loopback interface
       ipv4addr:
         - 1.1.1.1/32
-      ipv6addr:
-        - 2001:db8:0:5::1/64
-        - 2001:db8:0:6::1/65
   - fxp0.0:
       description: Mgmt Interface
       ipv4addr:
