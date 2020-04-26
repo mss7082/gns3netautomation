@@ -14,12 +14,21 @@ interfaces:
         - ge-0/0/2
       ipv4addr:
         - 10.1.12.1/24
+      ipv6addr:
+        - 2001:db8:0:5::1/64
+        - 2001:db8:0:6::1/65
   - lo0.0:
       description: Loopback interface
       ipv4addr:
         - 1.1.1.1/32
+      ipv6addr:
+        - 2001:db8:0:5::1/64
+        - 2001:db8:0:6::1/65
   - fxp0.0:
       description: Mgmt Interface
       ipv4addr:
         - 172.16.1.11/24
+      ipv6addr:
+        - 2001:db8:0:5::1/64
+        - 2001:db8:0:6::1/65
 
