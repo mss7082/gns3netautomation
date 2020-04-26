@@ -1,0 +1,13 @@
+#After update the Pillar data in gitfs
+
+salt-run git_pillar.update
+salt-run saltutil.sync_pillar
+salt \* saltutil.refresh_pillar
+salt r1 pillar.get interfaces
+
+
+# Update gitfs
+salt-run fileserver.update
+
+# Verify fileserver
+salt-run filserver.dir_list
