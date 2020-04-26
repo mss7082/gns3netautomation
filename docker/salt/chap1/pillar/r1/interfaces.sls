@@ -28,7 +28,4 @@ interfaces:
       description: Mgmt Interface
       ipv4addr:
         - 172.16.1.11/24
-      ipv6addr:
-        - 2001:db8:0:5::1/64
-        - 2001:db8:0:6::1/65
 

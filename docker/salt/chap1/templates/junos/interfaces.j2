@@ -6,7 +6,7 @@ interfaces {
         {#description {{ intf_data_dict.description }};#}
         unit {{ splited_intf[1] }}  {
 
-            {%- if intf_data_dict.ipv4addr %}
+            {%- if intf_data_dict.ipv4addr is defined %}
             family inet {
                 {% for ipv4 in intf_data_dict.ipv4addr %}
                 address {{ ipv4 }};
@@ -14,7 +14,7 @@ interfaces {
             }
             {%- endif %}
 
-            {%- if intf_data_dict.ipv6addr %}
+            {%- if intf_data_dict.ipv6addr is defined %}
             family inet6 {
                 {% for ipv6 in intf_data_dict.ipv6addr %}
                 address {{ ipv6 }};
