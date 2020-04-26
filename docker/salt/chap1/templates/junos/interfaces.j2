@@ -12,7 +12,7 @@ interfaces {
 
 
     {{ splited_intf[0] }} {
-        description {{ intf_data_dict.description }};
+        {#description {{ intf_data_dict.description }};#}
 
         {%- if intf_data_dict.mtu is defined %}
         mtu {{ intf_data_dict.mtu }};
