@@ -1,44 +1,39 @@
-{%- set interfaces = pillar.interfaces -%}
-
-
-
 interfaces {
-    {% for interface_dict in interfaces %}
-    {% for intf, unit_dict in interface_dict.items() %}
-    {{intf}} {
-        {% for unit_number, address_dict in unit_dict.units.items() %}
-        unit {{unit_number}} {
-            {% if address_dict.ipv4addr %}
+    {% for interface_dict in pillar.interfaces %}
+    {% for intf, intf_data_dict in interface_dict.items() %}
+    {% set splited_intf = intf.split(".") %}
+    {{ splited_intf[0] }} {
+        description "{{ intf_data_dict.description }}";
+        unit {{ splited_intf[1] }}  {
+
+            {%- if intf_data_dict.ipv4addr %}
             family inet {
-                {% for ipv4 in address_dict.ipv4addr %}
-                address {{ipv4}};
+                {% for ipv4 in intf_data_dict.ipv4addr %}
+                address {{ ipv4 }};
+                {% endfor %}
+            }
+            {%- endif %}
+
+            {%- if intf_data_dict.ipv6addr %}
+            family inet6 {
+                {% for ipv6 in intf_data_dict.ipv6addr %}
+                address {{ ipv6 }};
                 {% endfor %}
             }
             {% endif %}
-            {% if address_dict.ipv6addr %}
-            family inet6 {
-                {% for ipv6 in address_dict.ipv6addr %}
-                address {{ipv6}};
-                {% endfor %}
-            }
-                {% endif %}
         }
+    }
+
+    {% if "ae" in intf %}
+        {% for member in intf_data_dict.members %}
+    {{ member }} {
+        gigether-options {
+            802.3ad {{ splited_intf[0] }};
+        }
+    }
         {% endfor %}
-    }
+    {% endif %}
+
     {% endfor %}
     {% endfor %}
-    lo0 {
-        unit 0 {
-            family inet {
-                address {{pillar.loopbackv4}};
-            }
-        }
-    }
-    fxp0 {
-        unit 0 {
-            family inet {
-                address {{pillar.mgmtipv4}};
-            }
-        }
-    }
 }
