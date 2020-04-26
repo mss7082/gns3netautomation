@@ -13,12 +13,12 @@ interfaces {
         description {{ intf_data_dict.description }};
 
         {%- if intf_data_dict.mtu is defined %}
-        mtu {{intf_data_dict.mtu}};
+        mtu {{ intf_data_dict.mtu }};
         {% endif %}
 
         {% if lag_intf %}
             aggregated-ether-options {
-                minimum-links {{intf_data_dict.min_links}};
+                minimum-links {{ intf_data_dict.min_links }};
                 lacp {
                     active;
                 }
@@ -45,7 +45,7 @@ interfaces {
         }
     }
 
-    {% if lag_intf %}
+    {% if lag_intf is defined %}
         {% for member in intf_data_dict.members %}
     {{ member }} {
         gigether-options {
