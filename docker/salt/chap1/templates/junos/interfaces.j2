@@ -4,47 +4,46 @@ interfaces {
     {% for interface_dict in pillar.interfaces %}
     {% for intf, intf_data_dict in interface_dict.items() %}
     {% set splited_intf = intf.split(".") %}
+    {% set lag_intf = False %}
 
     {% if "ae" in intf %}
-    {% set lag_intf = True %}
-    {% else %}
-    {% set lag_intf = False %}
+        {% set lag_intf = True %}
     {% endif %}
 
 
     {{ splited_intf[0] }} {
         description {{ intf_data_dict.description }};
 
-        {% if intf_data_dict.mtu is defined %}
+        {%- if intf_data_dict.mtu is defined %}
         mtu {{ intf_data_dict.mtu }};
-        {% endif %}
+        {%- endif %}
 
-        {% if lag_intf %}
+        {%- if lag_intf %}
             aggregated-ether-options {
                 minimum-links {{ intf_data_dict.min_links }};
                 lacp {
                     active;
                 }
             }
-        {% endif %}
+        {%- endif %}
 
         unit {{ splited_intf[1] }}  {
 
-            {% if intf_data_dict.ipv4addr is defined %}
+            {%- if intf_data_dict.ipv4addr is defined %}
             family inet {
                 {% for ipv4 in intf_data_dict.ipv4addr %}
                 address {{ ipv4 }};
                 {% endfor %}
             }
-            {% endif %}
+            {%- endif %}
 
-            {% if intf_data_dict.ipv6addr is defined %}
+            {%- if intf_data_dict.ipv6addr is defined %}
             family inet6 {
                 {% for ipv6 in intf_data_dict.ipv6addr %}
                 address {{ ipv6 }};
                 {% endfor %}
             }
-            {% endif %}
+            {%- endif %}
         }
     }
 
