@@ -3,7 +3,7 @@ interfaces {
     {% for intf, intf_data_dict in interface_dict.items() %}
     {% set splited_intf = intf.split(".") %}
     {{ splited_intf[0] }} {
-        description {{ intf_data_dict.description }};
+        {#description {{ intf_data_dict.description }};#}
         unit {{ splited_intf[1] }}  {
 
             {%- if intf_data_dict.ipv4addr %}
