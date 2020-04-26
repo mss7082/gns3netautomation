@@ -15,7 +15,7 @@ interfaces {
     {{ splited_intf[0] }} {
         description {{ intf_data_dict.description }};
 
-        {%- if intf_data_dict.mtu is defined %}
+        {% if intf_data_dict.mtu is defined %}
         mtu {{ intf_data_dict.mtu }};
         {% endif %}
 
@@ -30,15 +30,15 @@ interfaces {
 
         unit {{ splited_intf[1] }}  {
 
-            {%- if intf_data_dict.ipv4addr is defined %}
+            {% if intf_data_dict.ipv4addr is defined %}
             family inet {
                 {% for ipv4 in intf_data_dict.ipv4addr %}
                 address {{ ipv4 }};
                 {% endfor %}
             }
-            {%- endif %}
+            {% endif %}
 
-            {%- if intf_data_dict.ipv6addr is defined %}
+            {% if intf_data_dict.ipv6addr is defined %}
             family inet6 {
                 {% for ipv6 in intf_data_dict.ipv6addr %}
                 address {{ ipv6 }};
