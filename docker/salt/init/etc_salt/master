@@ -3,30 +3,65 @@ fileserver_backend:
 gitfs_base: master
 gitfs_provider: gitpython
 gitfs_update_interval: 300
+#gitfs_remotes:
+#  - ssh://git@github.com/mss7082/gns3netautomation.git:
+#    - name: templates
+#    - root: docker/salt/chap1/templates
+#    - mountpoint: salt://templates
+#  - ssh://git@github.com/mss7082/gns3netautomation.git:
+#    - name: states
+#    - root: docker/salt/chap1/states
+#    - mountpoint: salt://states
+#  - ssh://git@github.com/mss7082/gns3netautomation.git:
+#    - name: custom_modules
+#    - root: docker/salt/init/_modules
+#    - mountpoint: salt://_modules
+#  - ssh://git@github.com/mss7082/gns3netautomation.git:
+#    - name: custom_util_modules
+#    - root: docker/salt/init/_utils
+#    - mountpoint: salt://_utils
+#  - ssh://git@github.com/mss7082/gns3netautomation.git:
+#    - name: orchestration
+#    - root: docker/salt/chap1/orch
+#    - mountpoint: salt://orch
+#  - ssh://git@github.com/mss7082/gns3netautomation.git:
+#    - name: reactor
+#    - root: docker/salt/chap1/react
+#    - mountpoint: salt://react
+
+#git_pillar_provider: gitpython
+#git_pillar_base: master
+#git_pillar_update_interval: 500
+#ext_pillar:
+#  - git:
+#    - master ssh://git@github.com/mss7082/gns3netautomation.git:
+#      - root: docker/salt/chap1/pillar
+
+gitfs_ssl_verify: False
 gitfs_remotes:
-  - ssh://git@github.com/mss7082/gns3netautomation.git:
+  - ssh://git@gitlab.mss.com/networking/salt/fileserver.git:
     - name: templates
-    - root: docker/salt/chap1/templates
+    - root: templates
     - mountpoint: salt://templates
-  - ssh://git@github.com/mss7082/gns3netautomation.git:
+  - ssh://git@gitlab.mss.com/networking/salt/fileserver.git:
     - name: states
-    - root: docker/salt/chap1/states
+    - root: states
     - mountpoint: salt://states
-  - ssh://git@github.com/mss7082/gns3netautomation.git:
+  - ssh://git@gitlab.mss.com/networking/salt/fileserver.git:
     - name: custom_modules
-    - root: docker/salt/init/_modules
+    - root: _modules
     - mountpoint: salt://_modules
-  - ssh://git@github.com/mss7082/gns3netautomation.git:
-    - name: custom_utils
-    - root: docker/salt/init/_utils
+  - ssh://git@gitlab.mss.com/networking/salt/fileserver.git:
+    - name: custom_util_modules
+    - root: _utils
     - mountpoint: salt://_utils
-  - ssh://git@github.com/mss7082/gns3netautomation.git:
+  - ssh://git@gitlab.mss.com/networking/salt/fileserver.git:
     - name: orchestration
-    - root: docker/salt/chap1/orch
+    - root: orch
     - mountpoint: salt://orch
-  - ssh://git@github.com/mss7082/gns3netautomation.git:
+  - ssh://git@gitlab.mss.com/networking/salt/fileserver.git:
     - name: reactor
-    - root: docker/salt/chap1/react
+    - root: react
     - mountpoint: salt://react
 
 git_pillar_provider: gitpython
@@ -34,5 +69,5 @@ git_pillar_base: master
 git_pillar_update_interval: 500
 ext_pillar:
   - git:
-    - master ssh://git@github.com/mss7082/gns3netautomation.git:
-      - root: docker/salt/chap1/pillar
+    - master ssh://git@gitlab.mss.com/networking/salt/pillar.git:
+      - root: pillar
