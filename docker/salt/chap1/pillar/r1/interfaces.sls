@@ -1,3 +1,4 @@
+# TO DO - Create custom module/jinja2 filters to calculate min-links from the # of lag members
 interfaces:
   - ge-0/0/0.0:
       description: This is a link
